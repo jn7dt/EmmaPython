@@ -101,8 +101,8 @@ class RequestsAdapter(AbstractAdapter):
             >>> adptr.get('/members', {...})
             [{...}, {...}, ...] # 500-999
         """
-
-        params.update(self.pagination_add_ons())
+        if params:
+            params.update(self.pagination_add_ons())
 
         return process_response(
             requests.get(
